@@ -275,9 +275,10 @@
           const vaildStudent = this.students.filter(student => {
             return student.isValid
           }).map(student => student.name)
-          const group = _.chunk(vaildStudent, number)
           for (let i = 1; i <= 10; i++) {
             setTimeout((i) => {
+              const randomStudent = _.shuffle(vaildStudent)
+              const group = _.chunk(randomStudent, number)
               this.myGroups = _.shuffle(group)
               // LocalStorage에 생성한 Group을 저장해준다.
               const jsonData = JSON.stringify(this.myGroups)
