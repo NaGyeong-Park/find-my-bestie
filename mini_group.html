@@ -19,7 +19,7 @@
       color: rgb(127, 124, 130);
     }
     .isValid {
-      color: rgb(104, 104, 104);
+      color: rgb(211, 211, 211);
       text-decoration-line: line-through;
     }
     div {
@@ -38,6 +38,7 @@
     }
     #pick:hover{
        cursor: pointer;
+       color:wheat
     }
     .card {
       border-radius: 1em;
@@ -191,7 +192,6 @@
     <div class="text-light d-flex flex-row-reverse">made by July</div>
     <br><br>
   </div>
-  
   <script src="https://kit.fontawesome.com/25a5039376.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
@@ -225,7 +225,6 @@
         {name: '채민진', isValid: true},
         {name: '한지희', isValid: true},],
         student : '',
-        vStudent: '',
         number: '',
         myGroups: [],
         choseGroup: '',
@@ -241,9 +240,12 @@
         // 안 온 학생 비활성화(그룹에 포함X)
         toggleStudent(student){
           if (confirm('그룹이 초기화 됩니다, 계속 하시겠습니까?')){
+            // isValid 속성 값 바꾸기 
             this.students[this.students.findIndex(obj =>obj.name === student)].isValid= !this.students[this.students.findIndex(obj => obj.name === student)].isValid
-            this.resetLocal()
+            // Local Group data 초기화 / vue myGroups을 1인 그룹으로 만들어주기
+            window.localStorage.clear()
             this.soloGroup()
+            // 결석 리스트 고쳐주기
             if (this.absent === null || this.absent.indexOf(student) === -1){
               this.absent.push(student)
             }
@@ -253,9 +255,9 @@
             }
           }
         },
-        // 그룹 만들기
+        // 랜덤 그룹 뽑기
         groupStudents(number){
-          // loading div와 finished div 나왔다가 숨기기
+          // loading 화면 조작
           this.loading = true
 
           var that = this;
@@ -286,7 +288,7 @@
           this.number = ''
           
         },
-        // 그룹 초기화
+        // 그룹 초기화(1인 그룹)
         soloGroup(){
           const vaildStudent = this.students.filter(student => {
             return student.isValid
@@ -294,9 +296,7 @@
           const group = _.chunk(vaildStudent, 1)
           this.myGroups = group
         },
-        resetLocal(){
-          window.localStorage.clear()
-        },
+        // 랜덤 조뽑기
         randomGroup(){
           this.dugudugu = !this.dugudugu
           this.choseGroup = _.random(1,this.myGroups.length)
@@ -304,6 +304,7 @@
           this.choseGroup -= 1
           this.randomGroupMember()
         },
+        // 랜덤 사람 뽑기
         randomGroupMember(){
           // 그룹 없이 뽑는 경우 / 1명씩 그룹에서 뽑는 경우 / 1그룹만 만들고 뽑는 경우
           if ( !this.myGroups || this.myGroups[0].length === 1 || this.myGroups.length === 1 ){
@@ -315,6 +316,7 @@
             this.choseMember = this.myGroups[this.choseGroup][this.choseMember]
           }
         },
+        // 랜덤 조 + 랜덤 조 발표자 뽑기
         randomPick(){
           for (let i = 1; i <= 10; i++) {
             setTimeout((i) => {
@@ -329,6 +331,7 @@
           }, 6000)
           
         },
+        // icon 모양 바꿔주기
         mouseOver(){
           this.beforeIcon = 'fa-solid fa-face-kiss-wink-heart flex-row-reverse fa-2x '
         },
