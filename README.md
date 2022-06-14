@@ -1,12 +1,28 @@
+
+
+   
+
+
+
 # 👭사이드 프로젝트 : 단짝 좀 찾아줘👨🏻‍🤝‍👨🏻
-***
+
+   
+
 ## 😮What is this?
-![image-20220614214020541](README.assets/image-20220614214020541.png)
+
+![image-20220614215126655](README.assets/image-20220614215126655.png)
 
 조 편성과 발표자 선택을 동시에 할 수 있는 HTML파일 한 장의 프로그램입니다.
 
 - 조원을 설정하고 랜덤으로 조를 만들 수 있습니다
 - Presenter 버튼을 클릭하여 랜덤으로 발표자를 선출할 수 있습니다  
+
+
+
+
+
+   
+
 ## 📚 STACKS  
 <div align=center>
     <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
@@ -14,7 +30,7 @@
     <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
     <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
 </div>
-  
+
 
   
 
@@ -54,7 +70,7 @@ LocalStorage에 편성된 조를 저장하였기에 새로고침해도 조가 �
 
   
 
-
+​    
 
 ***
 
