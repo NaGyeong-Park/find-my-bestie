@@ -116,8 +116,7 @@
       <div id="cardBox" class="card">
         <!--발표자 뽑기 버튼-->
         <div class="m-3 ms-3 d-flex flex-row-reverse" id="pick">
-          <button :class="beforeIcon" id="pickBtn" @click="randomPick"
-          @mouseover="mouseOver" @mouseleave="mouseLeave">
+          <button :class="beforeIcon" id="pickBtn" @click="randomPick">
           Presenter
         </button>
         </div>
@@ -346,13 +345,6 @@
             this.activeColor = 'rgb(127, 124, 130)'
           }, 6000)
           
-        },
-        // icon 모양 바꿔주기
-        mouseOver(){
-          this.beforeIcon = 'fa-solid fa-face-kiss-wink-heart flex-row-reverse fa-2x '
-        },
-        mouseLeave(){
-          this.beforeIcon = 'fa-solid fa-face-smile flex-row-reverse fa-2x '
         },
       },
       created() {
