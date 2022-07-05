@@ -107,7 +107,7 @@
       <!--Making Group-->
       <div id="inputBox" class="mb-3 d-flex flex-row">
         <input id="groupInput" class="text-center" placeholder="number of people"
-        type="text" v-model="number" @keydown.enter="groupStudents(number)">
+        type="number" v-model="number" @keydown.enter="groupStudents(number)">
       </div>
     </div>
     
@@ -272,6 +272,7 @@
         // 랜덤 그룹 뽑기
         groupStudents(number){
           // loading 화면 조작
+          if (number != "" & this.loading != true & this.finished != true) {
           this.loading = true
 
           var that = this;
@@ -300,8 +301,8 @@
             }, i * 250);
           }
           this.choseMember = false
-          this.number = ''
-          
+          this.number = '' 
+        }
         },
         // 그룹 초기화(1인 그룹)
         soloGroup(){
